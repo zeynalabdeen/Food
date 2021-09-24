@@ -40,6 +40,9 @@ nav .container{
     justify-content: space-around;
     align-items: center;
 }
+nav .wrapper{
+    transition: all 0.4s;
+}
 nav .wrapper ul{
     display: flex;
     flex-direction: row;
@@ -49,6 +52,7 @@ nav .wrapper ul{
 nav .wrapper>ul>li{
     line-height: 60px;
     margin: 0 20px;
+    transition: 0.5s;
 }
 nav .wrapper>ul>li>a:hover{
     transition: 0.4s;
@@ -74,6 +78,7 @@ nav .wrapper .foods{
     width: 250px;
 }
 nav .wrapper .foods ul li{
+    line-height: 50px;
     cursor: pointer;
     margin: 0 10px;
     padding: 0 5px;
@@ -82,9 +87,11 @@ nav .wrapper .foods ul li{
 nav .wrapper .foods ul li:hover{
     background: #ffd700;
     transition: 0.4s ease;
+    border-radius: 4px;
 }
 nav .wrapper .dropdown:hover .foods{
     visibility: visible;
+    opacity: 1;
     animation: toTop 0.5s ease forwards;
 }
 nav .wrapper .foods ul{
@@ -95,11 +102,39 @@ nav .wrapper .foods ul{
     flex-direction: column;
 }
 nav .wrapper .logo{
-
     position: absolute;
     left: 10px;
-    top: 10px;
+    top: 14px;
     display: none;
+}
+nav .wrapper .social{
+    display: none;
+    padding: 0 50px;
+    width: 100%;
+    justify-content: space-around;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+nav .wrapper .social i{
+    padding: 20px;
+    font-size: 25px;
+    cursor: pointer;
+    color: black;
+    transition: 0.4s all;
+}
+nav .wrapper .social .bxl-instagram:hover{
+    color: #cc00aa;
+    transform: translateY(-10px);
+}
+nav .wrapper .social .bxl-facebook-circle:hover{
+    color: #0065fc;
+    transform: translateY(-10px);
+}
+nav .wrapper .social .bxl-linkedin:hover{
+    color: #0045ad;
+    transform: translateY(-10px);
 }
 nav .tools{
     display: flex;
@@ -245,7 +280,8 @@ nav .bx-x{
 }
 #home .right .price button{
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.171);
-    background: linear-gradient(135deg,#1eb600,#ffd900c5);    color: #fff;
+    background: linear-gradient(135deg,#1eb600,#ffd900c5);    
+    color: #fff;
     cursor: pointer;
 }
 /* SWIPER JS */
@@ -325,8 +361,29 @@ nav .bx-x{
             box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.171);
             transition: 0.5s;
         }
+        nav .wrapper .social{
+            display: flex;
+        }
+        nav .wrapper .dropdown .foods{
+            box-shadow: none;
+            border-left: 1px solid #ffd700;
+        }
+        nav .wrapper .dropdown:hover .foods{
+            position: relative;
+            left: 0;
+            top: 0;
+            height: auto;
+        }
+        #home .left{
+            padding-left: 20px;
+        }
+        #home .left img{
+            bottom: 0;
+            right: 5px;
+        }
         nav .overlay.active{
             opacity: 0.5;
+            pointer-events: visible;
         }
         nav .wrapper.active{
             width: 250px;
@@ -341,13 +398,6 @@ nav .bx-x{
             flex-direction: column;
             align-items: flex-start;
         }
-        #home .left{
-            padding-left: 20px;
-        }
-        #home .left img{
-            bottom: 0;
-            right: 5px;
-        }
         nav .wrapper ul li{
             line-height: 45px;
         }
@@ -356,4 +406,14 @@ nav .bx-x{
         }
         
         
+    }
+    @media (max-width:400px) {
+        #home .left h2{
+            font-size: 22px;
+        }
+        #home .left p{
+            font-size: 13px;
+            white-space: normal;
+            width: auto;
+        }
     }
