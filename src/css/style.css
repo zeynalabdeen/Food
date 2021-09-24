@@ -94,6 +94,13 @@ nav .wrapper .foods ul{
     align-items: flex-start;
     flex-direction: column;
 }
+nav .wrapper .logo{
+
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    display: none;
+}
 nav .tools{
     display: flex;
     justify-content: center;
@@ -326,10 +333,16 @@ nav .bx-x{
             overflow: auto;
             opacity: 1;
         }
+        nav .wrapper.active .logo{
+            display: block;
+        }
         nav .wrapper ul{
+            margin-top: 30px;
             flex-direction: column;
             align-items: flex-start;
-            
+        }
+        nav .wrapper ul li{
+            line-height: 45px;
         }
         nav .bx-x,nav .bx-menu-alt-right{
             display: block;
