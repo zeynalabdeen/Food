@@ -336,7 +336,7 @@ nav .bx-x{
         nav .wrapper.active .logo{
             display: block;
         }
-        nav .wrapper ul{
+        nav .wrapper > ul{
             margin-top: 30px;
             flex-direction: column;
             align-items: flex-start;
