@@ -65,16 +65,22 @@ nav .wrapper ul li a{
 nav .wrapper .dropdown{
     position: relative;
 }
+nav .wrapper .dropdown .bx-right-arrow{
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    cursor: pointer;
+    display: none;
+}
 nav .wrapper .foods{
+    position: absolute;
     padding: 10px 0;
     background: #fff;
     border-radius: 2px;
-    box-shadow: 2px 2px 4px #00000048;
-    position: absolute;
-    left: -50%;
-    top: 60px;
-    opacity: 0;
-    visibility: hidden;
+    box-shadow: 2px 2px 4px #00000048; 
+    display: none;
+    overflow: hidden;
+    transition: all .4s ease-in-out;
     width: 250px;
 }
 nav .wrapper .foods ul li{
@@ -89,11 +95,15 @@ nav .wrapper .foods ul li:hover{
     transition: 0.4s ease;
     border-radius: 4px;
 }
-nav .wrapper .dropdown:hover .foods{
-    visibility: visible;
-    opacity: 1;
-    animation: toTop 0.5s ease forwards;
+@media (min-width: 1050px) {
+    nav .wrapper .dropdown:hover .foods{
+        display: block;
+        opacity: 1;
+        height: auto;
+        animation: toTop 0.5s ease forwards;
+    }
 }
+
 nav .wrapper .foods ul{
     color: black;
     display: flex;
@@ -220,10 +230,10 @@ nav .bx-x{
     color: white;
     font-family: 'Noto Sans', sans-serif;
 }
-#home .left button{
+.myBtn{
     border: 0;
     border-radius: 2px;
-    background: linear-gradient(135deg, #ffd900c5,#1eb600);
+    background: linear-gradient(135deg, #7700ffc5,#0064b6);
     color: white;
     margin-top: 30px;
     padding: 8px 20px;
@@ -232,22 +242,38 @@ nav .bx-x{
     position: relative;
     z-index: 2;
     overflow: hidden;
+    display: flex;
+    align-items: center;
 }
-#home .left button::before{
+.myBtn::before{
     content: '';
     position: absolute;
     left: 0;
     top: 0;
     height: 100%;
-    width: 0;
     z-index: -1;
-    background: linear-gradient(to right,#1eb600,#ffd900c5);
-    transition: 0.5s;
-    opacity: 0;
+    background: linear-gradient(to right, #7700ff,#008cff);
+    transition: 0.7s;
+    opacity: 1;
+    transform: scaleX(0);
 }
-#home .left button:hover:before{
+.myBtn:hover:before{
     width: 100%;
     opacity: 1;
+    animation: scaleX 0.5s ease forwards;
+}
+@keyframes scaleX {
+    0%{
+        transform: scaleX(0);
+    }
+    100%{
+        transform: scaleX(1);
+    }
+}
+.myBtn .bx{
+    line-height: 20px;
+    margin-right: 5px;
+    font-size: 22px;
 }
 #home .right{
     position: relative;
@@ -269,7 +295,7 @@ nav .bx-x{
     justify-content: space-between;
     align-items: center;
 }
-#home .right .price :is(span,button){
+#home .right .price :is(span){
     border: none;
     border-radius: 4px;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.171);
@@ -278,11 +304,9 @@ nav .bx-x{
     font-size: 18px;
     font-family: 'Noto Sans', sans-serif;
 }
-#home .right .price button{
+#home .right .price .myBtn{
+    margin: 0;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.171);
-    background: linear-gradient(135deg,#1eb600,#ffd900c5);    
-    color: #fff;
-    cursor: pointer;
 }
 /* SWIPER JS */
 .swiper {
@@ -357,23 +381,43 @@ nav .bx-x{
             height: 100vh;
             width: 0;
             opacity: 0;
-            overflow: hidden;
+            overflow: hidden !important;
             box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.171);
             transition: 0.5s;
+        }
+        nav .wrapper ul > li{
+            width: 90%;
         }
         nav .wrapper .social{
             display: flex;
         }
         nav .wrapper .dropdown .foods{
+            position: static;
+            display: block;
+            height: 0;
+            padding: 0;
+            width: 220px;
             box-shadow: none;
             border-left: 1px solid #ffd700;
         }
-        nav .wrapper .dropdown:hover .foods{
+        nav .wrapper.active .dropdown.active .foods{ 
+            height: 220px;  
+        }
+        nav .wrapper.active .dropdown .bx-right-arrow{
+            transform: rotate(0);
+            transition: 0.5s;
+        }
+        nav .wrapper.active .dropdown.active .bx-right-arrow{
+            transform: rotate(90deg);
+        }
+        nav .wrapper .dropdown .bx-right-arrow{
+            display: block;
+        }
+        /* nav .wrapper .dropdown:hover .foods{
             position: relative;
             left: 0;
             top: 0;
-            height: auto;
-        }
+        } */
         #home .left{
             padding-left: 20px;
         }
@@ -393,6 +437,8 @@ nav .bx-x{
         nav .wrapper.active .logo{
             display: block;
         }
+
+
         nav .wrapper > ul{
             margin-top: 30px;
             flex-direction: column;
