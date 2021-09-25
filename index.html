@@ -24,7 +24,7 @@
                 <ul>
                     <li><a href="#">Home</a></li>
                     <li class="dropdown">
-                        <a href="#">Foods</a>
+                        <a href="#">Foods</a> <i class='bx bx-right-arrow'></i>
                         <div class="foods">
                             <ul>
                                 <li><a href="#">Fastfood</a></li>
@@ -61,7 +61,7 @@
             <h2>Damaq dadınıza uyğun hər şey. . .</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates sequi illum nisi, ex nesciunt minima
                 reiciendis asperiores incidunt dolores neque.</p>
-            <button>Sifariş et</button>
+            <button class="myBtn">Sifariş et</button>
         </div>
         <div class="right">
             <div class="swiper mySwiper">
@@ -73,7 +73,7 @@
                             <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, est.</h5>
                             <div class="price">
                                 <span class="priceSpan">17$</span>
-                                <button>Səbətə əlavə et</button>
+                                <button class="myBtn"><i class='bx bx-cart'></i> Əlavə et</button>
                             </div>
                         </div>
                     </div>
@@ -85,7 +85,7 @@
                             <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, est.</h5>
                             <div class="price">
                                 <span class="priceSpan">17$</span>
-                                <button>Səbətə əlavə et</button>
+                                <button class="myBtn"><i class='bx bx-cart'></i> Əlavə et</button>
                             </div>
                         </div>
                     </div>
@@ -133,6 +133,9 @@
             $("#close").click(function () {
                 $("#wrapper").removeClass("active");
                 $(".overlay").removeClass("active");
+            })
+            $(".bx-right-arrow").click(function () {
+                $(".dropdown").toggleClass("active");
             })
 
 
