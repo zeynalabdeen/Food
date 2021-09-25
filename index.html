@@ -49,6 +49,13 @@
                 <i class='bx bx-menu-alt-right' id="menu"></i>
 
                 <div class="cartBox">
+                    <ul>
+
+
+                    </ul>
+                    <button class="buy">
+                        Ödəniş et
+                    </button>
 
                 </div>
             </div>
@@ -71,10 +78,15 @@
                     <div class="swiper-slide">
                         <img src="src/img/1.png" alt="">
                         <div class="content">
-                            <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, est.</h5>
+                            <h5>Ağ balıq</h5>
+                            <div class="counter">
+                                <button class="decounter">-</button>
+                                <span class="quantity">0</span>
+                                <button class="incounter">+</button>
+                            </div>
                             <div class="price">
                                 <span class="priceSpan">17$</span>
-                                <button class="myBtn"><i class='bx bx-cart'></i> Əlavə et</button>
+                                <button class="myBtn addToCart"><i class='bx bx-cart'></i> Əlavə et</button>
                             </div>
                         </div>
                     </div>
@@ -83,10 +95,15 @@
                     <div class="swiper-slide">
                         <img src="src/img/1.png" alt="">
                         <div class="content">
-                            <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, est.</h5>
+                            <h5>Ağ balıq2</h5>
+                            <div class="counter">
+                                <button class="decounter">-</button>
+                                <span class="quantity">0</span>
+                                <button class="incounter">+</button>
+                            </div>
                             <div class="price">
                                 <span class="priceSpan">17$</span>
-                                <button class="myBtn"><i class='bx bx-cart'></i> Əlavə et</button>
+                                <button class="myBtn addToCart"><i class='bx bx-cart'></i> Əlavə et</button>
                             </div>
                         </div>
                     </div>
@@ -117,10 +134,6 @@
                 nextEl: ".swiper-button-next",
                 prevEl: ".swiper-button-prev",
             },
-            autoplay: {
-                delay: 3000,
-                disableOnInteraction: false,
-            },
         });
     </script>
     <!-- JQUERY -->
@@ -130,6 +143,7 @@
             $("#menu").click(function () {
                 $("#wrapper").addClass("active");
                 $(".overlay").addClass("active");
+                $(".cartBox").removeClass("active")
             })
             $("#close").click(function () {
                 $("#wrapper").removeClass("active");
@@ -138,9 +152,47 @@
             $(".bx-right-arrow").click(function () {
                 $(".dropdown").toggleClass("active");
             })
+            $("#cart").click(function () {
+                $(".cartBox").toggleClass("active");
+            })
 
+            var counter = 0;
+            $(".counter .incounter").click(function () {
+                counter++;
+                console.log(counter);
+                $(".swiper-slide-active .quantity").text(counter);
+            })
+            $(".counter .decounter").click(function () {
+                if (counter > 0) {
+                    counter--;
+                }
+                console.log(counter);
+                $(".swiper-slide-active .quantity").text(counter);
+            })
+            $(".swiper-button-next, .swiper-button-prev").click(function () {
+                counter = 0;
+                $(".quantity").text(counter);
+            })
+
+            //add TO Cart
+            var index = 0;
+            $(".swiper-slide-active .addToCart").click(function () {
+                index++;
+
+                $(".cartBox ul").append(`
+                    <li id="${index}">
+                        <span style="color: #fff;">Ağ balıq</span>
+                        <span id="cartPrice">17$</span>
+                        <input type="text" value=${counter}>
+                        <button class="delete">-</button>
+                    </li>
+                `);
+            });
+            
 
         });
+        
+
     </script>
 </body>
 
