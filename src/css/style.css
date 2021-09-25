@@ -9,6 +9,9 @@
     box-sizing: border-box;
     list-style: none;
 }
+input:focus{
+    outline: none;
+}
 .overlay{
     position: absolute;
     left: 0;
@@ -147,6 +150,7 @@ nav .wrapper .social .bxl-linkedin:hover{
     transform: translateY(-10px);
 }
 nav .tools{
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -164,9 +168,110 @@ nav .bx-cart:hover{
 
 }
 nav .container .cartBox{
-    display: none;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    padding: 5px 0;
+    top: 45px;
+    right: 0;
+    height: 0;
+    width: 200px;
     opacity: 0;
+    background: linear-gradient(#c18affe3, #008cffb4); 
+    transition: 0.5s;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.219);
+    overflow-x: hidden;
+    border-radius: 2px;
+    backdrop-filter: blur(5px);
 }
+nav .container .cartBox.active{
+    height: 350px;
+    opacity: 1;
+}
+nav .container .cartBox ul{
+    overflow-y: auto;
+    height: 85%;
+    width: 180px;
+}
+nav .container .cartBox ul::-webkit-scrollbar{
+    width: 7px;
+}
+nav .container .cartBox ul::-webkit-scrollbar-track{
+    background: #7700ff;
+    border-radius: 5px;
+}
+nav .container .cartBox ul::-webkit-scrollbar-thumb{
+    background: #350072;
+    border-radius: 5px;
+}
+nav .container .cartBox ul li{
+    width: 100%;
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5px;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.308);
+    white-space: nowrap;
+    border-bottom: 2px solid #7700ff56;
+    line-height: 35px;
+    margin-bottom: 2px;
+    border-radius: 2px 2px 0 0;
+    transition: 0.4s;
+}
+nav .container .cartBox.active ul li{
+    display: flex;
+}
+nav .container .cartBox input{
+    padding: 2px 1px;
+    text-align: center;
+    border-radius: 3px;
+    width: 30px;
+    background: transparent;
+    border: 1px solid #7700ff;
+    color: #350072;
+}
+nav .container .cartBox button.delete{
+    border: none;
+    background: transparent;
+    margin-right: 5px;
+    padding-bottom: 2px;
+    border-radius: 0;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+nav .cartBox #cartPrice{
+    color: #350072;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    height: 22px;
+    width: 22px;
+    background: transparent;
+    font-size: 13px;
+}
+nav .cartBox .buy{
+    position: absolute;
+    padding: 5px 15px;
+    bottom: 10px;
+    border: none;
+    font-size: 16px;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.308);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.164);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+nav .cartBox .buy:active{
+    transform: scaleX(1.4);
+}
+
+
 nav .bx-x,nav .bx-menu-alt-right{
     cursor: pointer;
     font-size: 30px;
@@ -188,6 +293,8 @@ nav .bx-x{
     }
 
 }
+
+
 #home{
     display: flex;
     justify-content: center;
@@ -244,6 +351,10 @@ nav .bx-x{
     overflow: hidden;
     display: flex;
     align-items: center;
+    transition: 0.5s;
+}
+.myBtn:active{
+    transform: scaleX(1.2);
 }
 .myBtn::before{
     content: '';
@@ -289,17 +400,36 @@ nav .bx-x{
 #home .right .content{
     width: 350px;    
 }
+#home .counter{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: #7700ff;
+}
+.decounter, .incounter{
+    color: white;
+    background: #7700ff;
+    margin: 0 10px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    box-shadow: 1px 2px 4px #0000003d;
+    border-radius: 50%;
+    cursor: pointer;
+}
 #home .right .price{
     height: 100px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-#home .right .price :is(span){
+#home .right .price span{
     border: none;
     border-radius: 4px;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.171);
-    padding: 5px 15px;
+    padding: 6px 20px;
     background: #fff;
     font-size: 18px;
     font-family: 'Noto Sans', sans-serif;
@@ -401,7 +531,7 @@ nav .bx-x{
             border-left: 1px solid #ffd700;
         }
         nav .wrapper.active .dropdown.active .foods{ 
-            height: 220px;  
+            height: 200px;  
         }
         nav .wrapper.active .dropdown .bx-right-arrow{
             transform: rotate(0);
