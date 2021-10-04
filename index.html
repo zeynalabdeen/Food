@@ -76,34 +76,37 @@
                 <div class="swiper-wrapper">
 
                     <div class="swiper-slide">
-                        <img src="src/img/1.png" alt="">
-                        <div class="content">
-                            <h5>Ağ balıq</h5>
-                            <div class="counter">
-                                <button class="decounter">-</button>
-                                <span class="quantity">0</span>
-                                <button class="incounter">+</button>
-                            </div>
-                            <div class="price">
-                                <span class="priceSpan">17$</span>
-                                <button class="myBtn addToCart"><i class='bx bx-cart'></i> Əlavə et</button>
+                        <div class="myCard">
+                            <img src="src/img/1.png" alt="">
+                            <div class="content">
+                                <h5>Ağ balıq</h5>
+                                <div class="counter">
+                                    <button class="decounter">-</button>
+                                    <span class="quantity">1</span>
+                                    <button class="incounter">+</button>
+                                </div>
+                                <div class="price">
+                                    <span class="priceSpan">17$</span>
+                                    <button class="myBtn addToCart"><i class='bx bx-cart'></i> Əlavə et</button>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-
                     <div class="swiper-slide">
-                        <img src="src/img/1.png" alt="">
-                        <div class="content">
-                            <h5>Ağ balıq2</h5>
-                            <div class="counter">
-                                <button class="decounter">-</button>
-                                <span class="quantity">0</span>
-                                <button class="incounter">+</button>
-                            </div>
-                            <div class="price">
-                                <span class="priceSpan">17$</span>
-                                <button class="myBtn addToCart"><i class='bx bx-cart'></i> Əlavə et</button>
+                        <div class="myCard">
+                            <img src="src/img/1.png" alt="">
+                            <div class="content">
+                                <h5>Ağ balıq1</h5>
+                                <div class="counter">
+                                    <button class="decounter">-</button>
+                                    <span class="quantity">1</span>
+                                    <button class="incounter">+</button>
+                                </div>
+                                <div class="price">
+                                    <span class="priceSpan">17$</span>
+                                    <button class="myBtn addToCart"><i class='bx bx-cart'></i> Əlavə et</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -117,6 +120,10 @@
 
 
         </div>
+    </section>
+
+    <section id="products">
+        
     </section>
 
 
@@ -156,42 +163,39 @@
                 $(".cartBox").toggleClass("active");
             })
 
-            var counter = 0;
+            var counter = 1;
             $(".counter .incounter").click(function () {
                 counter++;
                 console.log(counter);
                 $(".swiper-slide-active .quantity").text(counter);
             })
             $(".counter .decounter").click(function () {
-                if (counter > 0) {
+                if (counter > 1) {
                     counter--;
                 }
                 console.log(counter);
                 $(".swiper-slide-active .quantity").text(counter);
             })
             $(".swiper-button-next, .swiper-button-prev").click(function () {
-                counter = 0;
+                counter = 1;
                 $(".quantity").text(counter);
             })
 
             //add TO Cart
-            var index = 0;
-            $(".swiper-slide-active .addToCart").click(function () {
-                index++;
-
-                $(".cartBox ul").append(`
-                    <li id="${index}">
-                        <span style="color: #fff;">Ağ balıq</span>
-                        <span id="cartPrice">17$</span>
-                        <input type="text" value=${counter}>
-                        <button class="delete">-</button>
-                    </li>
-                `);
-            });
-            
-
+            // var index = 0;
+            // $(".swiper-slide-active .addToCart").click(function () {
+            //     index++;
+            //     console.log("HIIII")
+            //     $(".cartBox ul").append(`
+            //         <li key="${index}">
+            //             <span style="color: #fff;">${$("this .content h5").text()}</span>
+            //             <span id="cartPrice">${$(".swiper-slide-active .price .priceSpan").text()}</span>
+            //             <input type="text" value=${counter}>
+            //             <button class="delete">-</button>
+            //         </li>
+            //     `);
+            // });
         });
-        
 
     </script>
 </body>
