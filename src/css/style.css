@@ -620,6 +620,11 @@ nav .bx-x{
             width: 75%;
         }
     }
+    @media (min-width:400px) and (max-width: 450px) {
+        #home .myCard{
+            width: 80%;
+        }
+    }
     #proudcts{
         width: 100%;
         height: 100vh;
